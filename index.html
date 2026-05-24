@@ -3,563 +3,612 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Igor Marcenaria - Móveis sob medida em Feira de Santana. Mais de 100 clientes satisfeitos. Qualidade, preço justo e satisfação garantida.">
+    <meta name="description" content="Igor Marcenaria - Móveis sob medida em Feira de Santana. Mais de 100 clientes satisfeitos. Qualidade artesanal, preço justo e satisfação garantida.">
     <title>Igor Marcenaria | Móveis Sob Medida em Feira de Santana</title>
-    
-    <!-- Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
-            --bege-claro: #F5F1E8;
-            --verde-oliva: #4A6741;
-            --verde-escuro: #2C3E26;
-            --marrom-madeira: #8B7355;
-            --branco: #FFFFFF;
-            --cinza-claro: #E8E4DC;
+            --preto-quente: #161210;
+            --preto-suave: #1F1813;
+            --creme: #F7F2E9;
+            --creme-2: #EFE7D8;
+            --ambar: #D89A4E;
+            --ambar-claro: #E9B873;
+            --verde: #3E5C42;
+            --verde-claro: #6F9173;
+            --marrom: #8B6B47;
+            --texto-escuro: #211C16;
+            --glass-dark: rgba(32, 24, 18, 0.55);
+            --glass-light: rgba(255, 255, 255, 0.55);
         }
-        
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Lato', sans-serif;
-            color: var(--verde-escuro);
-            background: var(--bege-claro);
-            line-height: 1.6;
+            font-family: 'Manrope', sans-serif;
+            color: var(--texto-escuro);
+            background: var(--preto-quente);
+            line-height: 1.65;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        /* Textura sutil de madeira no fundo */
-        body::before {
+
+        /* Grão sutil global */
+        body::after {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(139, 115, 85, 0.02) 2px,
-                    rgba(139, 115, 85, 0.02) 4px
-                );
+            inset: 0;
             pointer-events: none;
-            z-index: -1;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
-        
-        /* Animações */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 800; line-height: 1.1; }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+        @keyframes glow { 0%, 100% { box-shadow: 0 0 25px rgba(216,154,78,0.3); } 50% { box-shadow: 0 0 45px rgba(216,154,78,0.55); } }
+        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        @keyframes spinSlow { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal.d1 { transition-delay: 0.12s; }
+        .reveal.d2 { transition-delay: 0.24s; }
+        .reveal.d3 { transition-delay: 0.36s; }
+
+        /* ===== BOTÕES ===== */
+        .btn-wpp {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            background: linear-gradient(135deg, #2BD46E 0%, #14A85A 100%);
+            color: #fff; padding: 1.15rem 2.4rem; border-radius: 100px;
+            text-decoration: none; font-weight: 700; font-size: 1.05rem;
+            border: none; cursor: pointer; position: relative;
+            box-shadow: 0 10px 30px rgba(20,168,90,0.35);
+            transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .animate-fade-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-        
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
-        
-        /* Header/Logo */
-        header {
-            padding: 2rem 5%;
-            background: var(--branco);
-            box-shadow: 0 2px 20px rgba(44, 62, 38, 0.08);
-            position: relative;
-        }
-        
-        .logo {
-            text-align: center;
-        }
-        
-        .logo h1 {
-            font-family: 'Crimson Text', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--verde-escuro);
-            letter-spacing: 1px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .logo h1::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--verde-oliva), var(--marrom-madeira));
-        }
-        
-        .logo p {
-            margin-top: 0.8rem;
-            color: var(--marrom-madeira);
-            font-size: 0.95rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 5rem 5% 6rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--bege-claro) 0%, #EAE6DC 100%);
-            position: relative;
-        }
-        
-        .hero h2 {
-            font-family: 'Crimson Text', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--verde-escuro);
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--verde-oliva);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            font-weight: 300;
-        }
-        
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--verde-escuro);
-            color: var(--bege-claro);
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 4px 15px rgba(44, 62, 38, 0.2);
-        }
-        
-        .badge::before {
-            content: '✓';
-            background: var(--verde-oliva);
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        /* Botão WhatsApp */
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-whatsapp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
-        }
-        
-        .btn-whatsapp::before {
-            content: '';
-            width: 24px;
-            height: 24px;
+        .btn-wpp:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 45px rgba(20,168,90,0.5); }
+        .btn-wpp::before {
+            content: ''; width: 22px; height: 22px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/%3E%3C/svg%3E");
-            background-size: contain;
+            background-size: contain; background-repeat: no-repeat;
         }
-        
-        /* Seção Diferenciais */
-        .diferenciais {
-            padding: 5rem 5%;
-            background: var(--branco);
+
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            padding: 1.1rem 2rem; border-radius: 100px; text-decoration: none;
+            font-weight: 600; font-size: 1rem; cursor: pointer;
+            border: 1.5px solid rgba(233,184,115,0.5); color: var(--ambar-claro);
+            background: rgba(216,154,78,0.06); backdrop-filter: blur(8px);
+            transition: all .35s cubic-bezier(.2,.7,.2,1);
         }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3.5rem;
+        .btn-ghost:hover { background: rgba(216,154,78,0.16); border-color: var(--ambar); transform: translateY(-3px); }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1.3rem 6%; display: flex; justify-content: space-between; align-items: center;
+            transition: all .4s ease;
         }
-        
-        .section-title h3 {
-            font-family: 'Crimson Text', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--verde-escuro);
-            margin-bottom: 0.8rem;
+        header.scrolled {
+            background: rgba(22,18,16,0.82); backdrop-filter: blur(16px);
+            padding: 0.85rem 6%; box-shadow: 0 8px 30px rgba(0,0,0,0.35);
         }
-        
-        .section-title p {
-            color: var(--verde-oliva);
-            font-size: 1.1rem;
-            font-weight: 300;
+        .brand { display: flex; align-items: center; gap: 0.7rem; }
+        .brand-mark {
+            width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+            background: linear-gradient(135deg, var(--ambar) 0%, var(--marrom) 100%);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 6px 18px rgba(216,154,78,0.35);
+            position: relative; overflow: hidden;
         }
-        
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .brand-mark svg { width: 24px; height: 24px; }
+        .brand-text h1 { font-size: 1.25rem; color: var(--creme); letter-spacing: 0.5px; }
+        .brand-text span { font-size: 0.62rem; color: var(--ambar-claro); letter-spacing: 3px; text-transform: uppercase; font-family: 'Manrope'; font-weight: 600; }
+        .header-cta { display: inline-flex; }
+        .header-cta .btn-wpp { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 8rem 6% 5rem; overflow: hidden;
         }
-        
-        .card {
-            background: var(--bege-claro);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background: url('https://images.unsplash.com/photo-1775396042188-64ec280ca175?w=1920&q=70&auto=format&fit=crop') center/cover no-repeat;
+            opacity: 0.18;
         }
-        
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--verde-oliva);
-            box-shadow: 0 15px 40px rgba(74, 103, 65, 0.15);
+        .hero-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            background:
+                radial-gradient(circle at 50% 25%, rgba(216,154,78,0.14), transparent 55%),
+                linear-gradient(180deg, rgba(22,18,16,0.85) 0%, rgba(22,18,16,0.78) 50%, var(--preto-quente) 100%);
         }
-        
-        .card-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, var(--verde-oliva), var(--verde-escuro));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+        .orb {
+            position: absolute; border-radius: 50%; z-index: 1; filter: blur(60px);
+            background: radial-gradient(circle, rgba(216,154,78,0.4), transparent 70%);
+            animation: floatY 8s ease-in-out infinite;
         }
-        
-        .card h4 {
-            font-family: 'Crimson Text', serif;
-            font-size: 1.6rem;
-            color: var(--verde-escuro);
-            margin-bottom: 1rem;
-            font-weight: 600;
+        .orb-1 { width: 320px; height: 320px; top: 12%; left: -60px; }
+        .orb-2 { width: 260px; height: 260px; bottom: 8%; right: -40px; background: radial-gradient(circle, rgba(62,92,66,0.45), transparent 70%); animation-delay: 2s; }
+
+        .hero-content { position: relative; z-index: 3; max-width: 880px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1.2rem; border-radius: 100px; margin-bottom: 2rem;
+            background: rgba(216,154,78,0.12); border: 1px solid rgba(216,154,78,0.35);
+            backdrop-filter: blur(10px); color: var(--ambar-claro);
+            font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px;
+            animation: fadeUp 0.9s ease both;
         }
-        
-        .card p {
-            color: var(--marrom-madeira);
-            line-height: 1.7;
-            font-weight: 300;
+        .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #2BD46E; box-shadow: 0 0 10px #2BD46E; animation: glow 2s infinite; }
+
+        .hero h2 {
+            font-size: clamp(2.6rem, 7vw, 5.2rem); color: var(--creme);
+            margin-bottom: 1.5rem; letter-spacing: -1px;
+            animation: fadeUp 1s ease 0.15s both;
         }
-        
-        /* Galeria */
-        .galeria {
-            padding: 5rem 5%;
-            background: linear-gradient(135deg, var(--bege-claro) 0%, #EAE6DC 100%);
+        .hero h2 .accent {
+            background: linear-gradient(120deg, var(--ambar-claro), var(--ambar), #fff, var(--ambar-claro));
+            background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; animation: shimmer 5s linear infinite;
         }
-        
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
+        .hero p {
+            font-size: clamp(1.05rem, 2vw, 1.3rem); color: rgba(247,242,233,0.78);
+            max-width: 620px; margin: 0 auto 2.6rem; font-weight: 300;
+            animation: fadeUp 1s ease 0.3s both;
         }
-        
-        .galeria-item {
-            position: relative;
+        .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s ease 0.45s both; }
+
+        .scroll-hint {
+            position: absolute; bottom: 2.2rem; left: 50%; transform: translateX(-50%); z-index: 3;
+            color: rgba(247,242,233,0.5); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+            display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+            animation: fadeUp 1s ease 0.8s both;
+        }
+        .scroll-hint .mouse { width: 24px; height: 38px; border: 2px solid rgba(247,242,233,0.4); border-radius: 14px; position: relative; }
+        .scroll-hint .mouse::before { content: ''; position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 4px; height: 8px; background: var(--ambar); border-radius: 2px; animation: floatY 1.8s infinite; }
+
+        /* ===== CARROSSEL 3D ===== */
+        .showcase {
+            position: relative; padding: 6rem 0 7rem; background: var(--preto-quente);
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(44, 62, 38, 0.1);
-            transition: all 0.4s ease;
-            aspect-ratio: 4/3;
         }
-        
-        .galeria-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .showcase-head { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; padding: 0 6%; }
+        .eyebrow {
+            display: inline-block; color: var(--ambar); font-weight: 700;
+            font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1rem;
         }
-        
-        .galeria-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 40px rgba(44, 62, 38, 0.2);
+        .showcase-head h3 { font-size: clamp(2rem, 4.5vw, 3.2rem); color: var(--creme); margin-bottom: 1rem; }
+        .showcase-head p { color: rgba(247,242,233,0.65); font-weight: 300; font-size: 1.08rem; }
+
+        .carousel-3d {
+            position: relative; height: 480px; width: 100%;
+            perspective: 1600px; margin-bottom: 2rem;
         }
-        
-        .galeria-item:hover img {
-            transform: scale(1.1);
+        .carousel-track {
+            position: relative; width: 100%; height: 100%;
+            transform-style: preserve-3d;
         }
-        
-        .galeria-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(74, 103, 65, 0.4), rgba(44, 62, 38, 0.4));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .card3d {
+            position: absolute; top: 50%; left: 50%;
+            width: 360px; height: 440px; margin: -220px 0 0 -180px;
+            border-radius: 20px; overflow: hidden; cursor: pointer;
+            transition: transform .7s cubic-bezier(.2,.7,.2,1), opacity .7s, filter .7s;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(216,154,78,0.2);
         }
-        
-        .galeria-item:hover::after {
-            opacity: 1;
+        .card3d img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .card3d .cap {
+            position: absolute; left: 0; right: 0; bottom: 0; padding: 1.4rem;
+            background: linear-gradient(to top, rgba(22,18,16,0.92), transparent);
+            color: var(--creme); font-family: 'Syne'; font-weight: 700; font-size: 1.05rem;
+            opacity: 0; transition: opacity .5s;
         }
-        
-        /* CTA Final */
-        .cta-final {
-            padding: 5rem 5%;
-            background: var(--verde-escuro);
-            text-align: center;
-            color: var(--bege-claro);
+        .card3d.active .cap { opacity: 1; }
+        .card3d.active { filter: none; }
+        .card3d:not(.active) { filter: brightness(0.5) saturate(0.8); }
+
+        .car-nav {
+            display: flex; gap: 1rem; justify-content: center; align-items: center; margin-top: 1rem;
         }
-        
-        .cta-final h3 {
-            font-family: 'Crimson Text', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
+        .car-btn {
+            width: 54px; height: 54px; border-radius: 50%; cursor: pointer;
+            background: rgba(216,154,78,0.1); border: 1.5px solid rgba(216,154,78,0.4);
+            color: var(--ambar-claro); display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; transition: all .3s; backdrop-filter: blur(8px);
         }
-        
-        .cta-final p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            opacity: 0.9;
+        .car-btn:hover { background: var(--ambar); color: var(--preto-quente); transform: scale(1.08); border-color: var(--ambar); }
+        .car-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; align-items: center; max-width: 320px; }
+        .car-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(247,242,233,0.25); cursor: pointer; transition: all .3s; }
+        .car-dot.active { width: 28px; border-radius: 5px; background: var(--ambar); }
+
+        .showcase-foot { text-align: center; margin-top: 3rem; padding: 0 6%; }
+
+        /* ===== DIFERENCIAIS (CLARO) ===== */
+        .features {
+            position: relative; padding: 7rem 6%; background: var(--creme);
+            overflow: hidden;
         }
-        
-        /* Footer */
+        .features::before {
+            content: ''; position: absolute; inset: 0; z-index: 0;
+            background: url('https://images.unsplash.com/photo-1611072337226-1140ab367200?w=1920&q=70&auto=format&fit=crop') center/cover;
+            opacity: 0.10;
+        }
+        .features::after {
+            content: ''; position: absolute; inset: 0; z-index: 0;
+            background: linear-gradient(180deg, var(--creme) 0%, rgba(247,242,233,0.7) 50%, var(--creme) 100%);
+        }
+        .features-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; }
+        .features-head { text-align: center; max-width: 680px; margin: 0 auto 3.5rem; }
+        .features-head .eyebrow { color: var(--marrom); }
+        .features-head h3 { font-size: clamp(2rem, 4.5vw, 3rem); color: var(--texto-escuro); margin-bottom: 1rem; }
+        .features-head p { color: #6b5e4d; font-weight: 400; font-size: 1.05rem; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.8rem; }
+        .glass-card {
+            position: relative; padding: 2.6rem 2.2rem; border-radius: 22px;
+            background: var(--glass-light); backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow: 0 20px 50px rgba(139,107,71,0.12);
+            transform-style: preserve-3d; transition: box-shadow .4s;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: ''; position: absolute; inset: 0; border-radius: 22px; padding: 1.5px;
+            background: linear-gradient(135deg, rgba(216,154,78,0.6), transparent 40%, transparent 60%, rgba(62,92,66,0.4));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .4s;
+        }
+        .glass-card:hover::before { opacity: 1; }
+        .glass-card:hover { box-shadow: 0 30px 70px rgba(139,107,71,0.22); }
+        .feat-icon {
+            width: 64px; height: 64px; border-radius: 18px; margin-bottom: 1.5rem;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--ambar), var(--marrom));
+            box-shadow: 0 10px 25px rgba(216,154,78,0.35); transform: translateZ(40px);
+        }
+        .feat-icon svg { width: 30px; height: 30px; stroke: #fff; }
+        .glass-card h4 { font-size: 1.4rem; color: var(--texto-escuro); margin-bottom: 0.8rem; transform: translateZ(25px); }
+        .glass-card p { color: #6b5e4d; font-weight: 400; transform: translateZ(15px); }
+
+        /* ===== STATS ===== */
+        .stats {
+            position: relative; padding: 5rem 6%; background: var(--preto-suave); overflow: hidden;
+        }
+        .stats::before {
+            content: ''; position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1506968430777-bf7784a87f23?w=1920&q=70&auto=format&fit=crop') center/cover;
+            opacity: 0.08;
+        }
+        .stats-inner {
+            position: relative; z-index: 2; max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; gap: 2rem; align-items: center; text-align: center;
+        }
+        .stat .num {
+            font-family: 'Syne'; font-weight: 800; font-size: clamp(2.8rem, 6vw, 4rem);
+            background: linear-gradient(120deg, var(--ambar-claro), var(--ambar));
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(216,154,78,0.2); line-height: 1;
+        }
+        .stat .lbl { color: rgba(247,242,233,0.7); font-weight: 500; letter-spacing: 1px; margin-top: 0.6rem; text-transform: uppercase; font-size: 0.85rem; }
+        .stat-divider { width: 1px; height: 70px; background: rgba(216,154,78,0.2); margin: 0 auto; }
+
+        /* ===== PORTFÓLIO CTA ===== */
+        .portfolio-band {
+            position: relative; padding: 6rem 6%; background: var(--creme); text-align: center; overflow: hidden;
+        }
+        .portfolio-band::before {
+            content: ''; position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1533035350251-aa8b8e208d95?w=1920&q=70&auto=format&fit=crop') center/cover;
+            opacity: 0.09;
+        }
+        .pb-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+        .pb-inner h3 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--texto-escuro); margin-bottom: 1rem; }
+        .pb-inner p { color: #6b5e4d; margin-bottom: 2rem; font-size: 1.05rem; }
+        .btn-drive {
+            display: inline-flex; align-items: center; gap: 0.8rem;
+            background: linear-gradient(135deg, var(--verde), #2c4430); color: var(--creme);
+            padding: 1.15rem 2.6rem; border-radius: 100px; text-decoration: none;
+            font-weight: 700; font-size: 1.05rem; box-shadow: 0 12px 32px rgba(62,92,66,0.35);
+            transition: all .35s cubic-bezier(.2,.7,.2,1);
+        }
+        .btn-drive:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(62,92,66,0.5); }
+        .btn-drive svg { width: 22px; height: 22px; }
+
+        /* ===== CTA FINAL ===== */
+        .final-cta {
+            position: relative; padding: 8rem 6%; text-align: center; overflow: hidden;
+            background: var(--preto-quente);
+        }
+        .final-cta::before {
+            content: ''; position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1775396042188-64ec280ca175?w=1920&q=70&auto=format&fit=crop') center/cover;
+            opacity: 0.16;
+        }
+        .final-cta::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(216,154,78,0.12), transparent 60%), linear-gradient(180deg, var(--preto-quente), rgba(31,24,19,0.85));
+        }
+        .fc-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+        .fc-inner h3 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); color: var(--creme); margin-bottom: 1.2rem; }
+        .fc-inner h3 .accent { color: var(--ambar-claro); }
+        .fc-inner p { color: rgba(247,242,233,0.75); font-weight: 300; font-size: 1.15rem; margin-bottom: 2.6rem; }
+
+        /* ===== FOOTER ===== */
         footer {
-            padding: 2.5rem 5%;
-            background: var(--verde-escuro);
-            color: var(--bege-claro);
-            text-align: center;
-            border-top: 3px solid var(--marrom-madeira);
+            background: #100D0B; color: rgba(247,242,233,0.6); padding: 3rem 6% 2.5rem;
+            border-top: 1px solid rgba(216,154,78,0.15); text-align: center;
         }
-        
-        footer p {
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
-        
-        footer strong {
-            color: var(--branco);
-            font-weight: 600;
-        }
-        
-        /* Botão Portfólio */
-        .btn-portfolio {
-            display: inline-flex;
-            align-items: center;
-            gap: 1.2rem;
-            background: var(--branco);
-            color: var(--verde-escuro);
-            padding: 1.5rem 2.5rem;
-            border-radius: 12px;
-            text-decoration: none;
-            box-shadow: 0 8px 30px rgba(44, 62, 38, 0.15);
-            transition: all 0.3s ease;
-            border: 2px solid var(--verde-oliva);
-        }
-        
-        .btn-portfolio:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(44, 62, 38, 0.25);
-            border-color: var(--verde-escuro);
-        }
-        
-        .btn-portfolio-icon {
-            font-size: 2rem;
-            line-height: 1;
-        }
-        
-        .btn-portfolio span:last-child {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.3rem;
-        }
-        
-        .btn-portfolio strong {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--verde-escuro);
-        }
-        
-        .btn-portfolio small {
-            font-size: 0.9rem;
-            color: var(--marrom-madeira);
-            font-weight: 400;
-        }
-        
-        /* Responsividade */
+        .foot-brand { display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+        .foot-brand .brand-mark { width: 34px; height: 34px; }
+        .foot-brand strong { font-family: 'Syne'; color: var(--creme); font-size: 1.1rem; }
+        footer .loc { font-size: 0.95rem; }
+        footer .copy { margin-top: 1rem; font-size: 0.8rem; opacity: 0.5; }
+
+        /* ===== RESPONSIVO ===== */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .logo h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title h3 {
-                font-size: 2rem;
-            }
-            
-            .cta-final h3 {
-                font-size: 2.2rem;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .galeria-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .btn-portfolio {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.2rem 1.8rem;
-            }
-            
-            .btn-portfolio span:last-child {
-                align-items: center;
-            }
+            header { padding: 1rem 5%; }
+            .header-cta { display: none; }
+            .hero { padding: 7rem 5% 4rem; }
+            .card3d { width: 260px; height: 340px; margin: -170px 0 0 -130px; }
+            .carousel-3d { height: 380px; }
+            .stats-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .stat-divider { display: none; }
+            .orb-1, .orb-2 { opacity: 0.6; }
+        }
+        @media (max-width: 420px) {
+            .card3d { width: 220px; height: 290px; margin: -145px 0 0 -110px; }
+            .carousel-3d { height: 330px; }
+            .hero-actions { flex-direction: column; align-items: stretch; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="animate-fade-up">
-        <div class="logo">
-            <h1>Igor Marcenaria</h1>
-            <p>Móveis Sob Medida</p>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="brand">
+            <div class="brand-mark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <h1>Igor Marcenaria</h1>
+                <span>Móveis Sob Medida</span>
+            </div>
+        </div>
+        <div class="header-cta">
+            <a href="https://wa.me/5575982427067?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20de%20marcenaria" target="_blank" class="btn-wpp">Orçamento</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero">
-        <h2 class="animate-fade-up delay-1">Transforme Seu Espaço com Qualidade Artesanal</h2>
-        <p class="animate-fade-up delay-2">Móveis planejados sob medida em Feira de Santana e região. Cada projeto é executado com dedicação, sem pressa, garantindo o resultado perfeito.</p>
-        <div class="badge animate-fade-up delay-3">+100 clientes satisfeitos</div>
-        <a href="https://wa.me/5575982427067?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20de%20marcenaria" target="_blank" class="btn-whatsapp animate-fade-up delay-4">
-            Fazer Orçamento no WhatsApp
-        </a>
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="hero-content">
+            <div class="hero-badge"><span class="dot"></span> +100 clientes satisfeitos em Feira de Santana</div>
+            <h2>Móveis que <span class="accent">transformam</span> o seu espaço</h2>
+            <p>Marcenaria artesanal sob medida. Cada projeto executado sem pressa, com preço justo e acabamento impecável.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/5575982427067?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20de%20marcenaria" target="_blank" class="btn-wpp">Fazer Orçamento no WhatsApp</a>
+                <a href="#showcase" class="btn-ghost">Ver Trabalhos ↓</a>
+            </div>
+        </div>
+        <div class="scroll-hint"><div class="mouse"></div>Role para explorar</div>
     </section>
 
-    <!-- Diferenciais -->
-    <section class="diferenciais">
-        <div class="section-title animate-fade-up">
-            <h3>Por Que Escolher a Igor Marcenaria?</h3>
-            <p>Compromisso com excelência em cada detalhe</p>
+    <!-- CARROSSEL 3D -->
+    <section class="showcase" id="showcase">
+        <div class="showcase-head reveal">
+            <span class="eyebrow">Portfólio</span>
+            <h3>Trabalhos que falam por nós</h3>
+            <p>Móveis planejados, projetados e construídos com dedicação artesanal.</p>
         </div>
-        
-        <div class="cards-grid">
-            <div class="card animate-fade-up delay-1">
-                <div class="card-icon">🛠️</div>
-                <h4>Qualidade Sem Pressa</h4>
-                <p>Executamos cada projeto com o tempo necessário para garantir acabamento impecável e durabilidade.</p>
+
+        <div class="carousel-3d reveal">
+            <div class="carousel-track" id="track">
+                <div class="card3d"><img src="imagens/berco.png" alt="Berço planejado branco com trocador"><div class="cap">Berço planejado com trocador</div></div>
+                <div class="card3d"><img src="imagens/guarda-roupa.png" alt="Guarda-roupa de portas deslizantes"><div class="cap">Guarda-roupa de portas deslizantes</div></div>
+                <div class="card3d"><img src="imagens/guarda-roupa-branco-prateleiras.jpg" alt="Guarda-roupa branco com prateleiras internas"><div class="cap">Guarda-roupa com prateleiras internas</div></div>
+                <div class="card3d"><img src="imagens/guarda-roupa-branco-gaveteiro.jpg" alt="Guarda-roupa branco com gaveteiro"><div class="cap">Guarda-roupa com gaveteiro</div></div>
+                <div class="card3d"><img src="imagens/guarda-roupa-madeira.jpg" alt="Guarda-roupa em madeira maciça"><div class="cap">Guarda-roupa em madeira maciça</div></div>
+                <div class="card3d"><img src="imagens/escrivaninha.png" alt="Escrivaninha em L planejada"><div class="cap">Escrivaninha em L sob medida</div></div>
+                <div class="card3d"><img src="imagens/balcao-nichos.jpg" alt="Balcão branco com nichos e gavetas"><div class="cap">Balcão com nichos e gavetas</div></div>
+                <div class="card3d"><img src="imagens/gabinete-cozinha-pia.jpg" alt="Gabinete de cozinha com pia"><div class="cap">Gabinete de cozinha com pia</div></div>
+                <div class="card3d"><img src="imagens/gabinete-branco-pia.jpg" alt="Gabinete branco para pia"><div class="cap">Gabinete branco sob medida</div></div>
+                <div class="card3d"><img src="imagens/gabinete-madeira-gavetas.jpg" alt="Gabinete em madeira com gavetas"><div class="cap">Gabinete em madeira com gavetas</div></div>
+                <div class="card3d"><img src="imagens/gaveteiro-madeira.jpg" alt="Gaveteiro em madeira maciça"><div class="cap">Gaveteiro em madeira maciça</div></div>
+                <div class="card3d"><img src="imagens/criado-amadeirado.jpg" alt="Criados-mudos amadeirados sob medida"><div class="cap">Módulos amadeirados sob medida</div></div>
+                <div class="card3d"><img src="imagens/prateleiras-comercio.jpg" alt="Prateleiras de madeira para comércio"><div class="cap">Prateleiras para comércio</div></div>
+                <div class="card3d"><img src="imagens/berco-gavetas.png" alt="Berço com gavetas integradas"><div class="cap">Berço com gaveteiro integrado</div></div>
+                <div class="card3d"><img src="imagens/guarda-roupa-aberto.png" alt="Interior organizado do guarda-roupa"><div class="cap">Interior planejado e organizado</div></div>
             </div>
-            
-            <div class="card animate-fade-up delay-2">
-                <div class="card-icon">💰</div>
-                <h4>Preço Justo</h4>
-                <p>Transparência total nos orçamentos. Cobramos o valor justo pelo trabalho de qualidade que entregamos.</p>
+        </div>
+
+        <div class="car-nav">
+            <div class="car-btn" id="prev" aria-label="Anterior">‹</div>
+            <div class="car-dots" id="dots"></div>
+            <div class="car-btn" id="next" aria-label="Próximo">›</div>
+        </div>
+
+        <div class="showcase-foot reveal">
+            <a href="portfolio.html" class="btn-ghost">Ver portfólio completo · +100 fotos →</a>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="features">
+        <div class="features-inner">
+            <div class="features-head reveal">
+                <span class="eyebrow">Por que a Igor Marcenaria</span>
+                <h3>Compromisso em cada detalhe</h3>
+                <p>Tradição artesanal encontra acabamento de excelência.</p>
             </div>
-            
-            <div class="card animate-fade-up delay-3">
-                <div class="card-icon">✅</div>
-                <h4>Satisfação Garantida</h4>
-                <p>Nosso propósito é ver você completamente satisfeito com o resultado final da sua obra.</p>
+            <div class="feature-grid">
+                <div class="glass-card tilt reveal d1">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                    <h4>Qualidade Sem Pressa</h4>
+                    <p>Executamos cada projeto no tempo necessário para garantir acabamento impecável e durabilidade real.</p>
+                </div>
+                <div class="glass-card tilt reveal d2">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <h4>Preço Justo</h4>
+                    <p>Transparência total no orçamento. Você paga o valor justo pela qualidade que entregamos, sem surpresas.</p>
+                </div>
+                <div class="glass-card tilt reveal d3">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                    <h4>Satisfação Garantida</h4>
+                    <p>Nosso propósito é simples: ver você completamente satisfeito com o resultado final da sua obra.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Galeria -->
-    <section class="galeria">
-        <div class="section-title animate-fade-up">
-            <h3>Nossos Trabalhos</h3>
-            <p>Confira alguns projetos que realizamos com dedicação</p>
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stats-inner">
+            <div class="stat reveal"><div class="num" data-count="100" data-suffix="+">0</div><div class="lbl">Projetos Entregues</div></div>
+            <div class="stat-divider"></div>
+            <div class="stat reveal d1"><div class="num" data-count="100" data-suffix="+">0</div><div class="lbl">Clientes Atendidos</div></div>
+            <div class="stat-divider"></div>
+            <div class="stat reveal d2"><div class="num" data-count="100" data-suffix="%">0</div><div class="lbl">Foco na Satisfação</div></div>
         </div>
-        
-        <div class="galeria-grid">
-            <div class="galeria-item animate-fade-up delay-1">
-                <img src="imagens/berco.png" alt="Berço infantil planejado em MDF branco com gavetas integradas">
-            </div>
-            <div class="galeria-item animate-fade-up delay-2">
-                <img src="imagens/guarda-roupa.png" alt="Guarda-roupa planejado com portas deslizantes em branco">
-            </div>
-            <div class="galeria-item animate-fade-up delay-3">
-                <img src="imagens/escrivaninha.png" alt="Escrivaninha em L planejada com gavetas">
-            </div>
-            <div class="galeria-item animate-fade-up delay-4">
-                <img src="imagens/berco-gavetas.png" alt="Detalhe das gavetas do berço planejado">
-            </div>
-            <div class="galeria-item animate-fade-up delay-4">
-                <img src="imagens/guarda-roupa-aberto.png" alt="Guarda-roupa planejado com interior organizado">
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="portfolio.html" class="btn-portfolio animate-fade-up delay-4">
-                <span class="btn-portfolio-icon">📸</span>
-                <span>
-                    <strong>Ver Portfólio Completo</strong>
-                    <small>+100 fotos de trabalhos realizados</small>
-                </span>
+    </section>
+
+    <!-- PORTFÓLIO BAND -->
+    <section class="portfolio-band">
+        <div class="pb-inner reveal">
+            <span class="eyebrow" style="color: var(--marrom);">Galeria Completa</span>
+            <h3>Quer ver tudo o que já fizemos?</h3>
+            <p>Mais de 100 fotos de móveis planejados, armários, quartos, cozinhas e muito mais.</p>
+            <a href="portfolio.html" class="btn-drive">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                Acessar Portfólio Completo
             </a>
         </div>
     </section>
 
-    <!-- CTA Final -->
-    <section class="cta-final">
-        <h3 class="animate-fade-up">Vamos Transformar o Seu Espaço?</h3>
-        <p class="animate-fade-up delay-1">Entre em contato agora e receba seu orçamento personalizado sem compromisso.</p>
-        <a href="https://wa.me/5575982427067?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20de%20marcenaria" target="_blank" class="btn-whatsapp animate-fade-up delay-2">
-            Fazer Orçamento no WhatsApp
-        </a>
+    <!-- CTA FINAL -->
+    <section class="final-cta">
+        <div class="fc-inner reveal">
+            <h3>Vamos transformar o <span class="accent">seu espaço</span>?</h3>
+            <p>Entre em contato agora e receba um orçamento personalizado, sem compromisso.</p>
+            <a href="https://wa.me/5575982427067?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20de%20marcenaria" target="_blank" class="btn-wpp">Fazer Orçamento no WhatsApp</a>
+        </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
-        <p><strong>Igor Marcenaria</strong> | Feira de Santana - Bahia</p>
-        <p style="margin-top: 0.5rem; opacity: 0.6;">© 2026 - Todos os direitos reservados</p>
+        <div class="foot-brand">
+            <div class="brand-mark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+            </div>
+            <strong>Igor Marcenaria</strong>
+        </div>
+        <p class="loc">Feira de Santana · Bahia · (75) 98242-7067</p>
+        <p class="copy">© 2026 Igor Marcenaria — Todos os direitos reservados</p>
     </footer>
+
+    <script>
+        // Header scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // Scroll reveal
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Contador animado
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const el = e.target; const target = +el.dataset.count; const suffix = el.dataset.suffix || '';
+                    let cur = 0; const step = Math.max(1, Math.floor(target / 45));
+                    const t = setInterval(() => { cur += step; if (cur >= target) { cur = target; clearInterval(t); } el.textContent = cur + suffix; }, 22);
+                    countObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.num[data-count]').forEach(el => countObserver.observe(el));
+
+        // Tilt 3D nos cards
+        document.querySelectorAll('.tilt').forEach(card => {
+            card.addEventListener('mousemove', (ev) => {
+                const r = card.getBoundingClientRect();
+                const px = (ev.clientX - r.left) / r.width - 0.5;
+                const py = (ev.clientY - r.top) / r.height - 0.5;
+                card.style.transform = `perspective(900px) rotateY(${px * 9}deg) rotateX(${-py * 9}deg) translateY(-6px)`;
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(900px) rotateY(0) rotateX(0)'; });
+        });
+
+        // ===== CARROSSEL 3D COVERFLOW =====
+        const cards = Array.from(document.querySelectorAll('.card3d'));
+        const dotsWrap = document.getElementById('dots');
+        let current = 0; let auto;
+
+        cards.forEach((_, i) => {
+            const d = document.createElement('div'); d.className = 'car-dot';
+            d.addEventListener('click', () => { current = i; render(); resetAuto(); });
+            dotsWrap.appendChild(d);
+        });
+        const dots = Array.from(dotsWrap.children);
+
+        function render() {
+            const n = cards.length;
+            cards.forEach((card, i) => {
+                let offset = i - current;
+                if (offset > n / 2) offset -= n;
+                if (offset < -n / 2) offset += n;
+                const abs = Math.abs(offset);
+                const tx = offset * 230;
+                const tz = -abs * 220;
+                const ry = offset * -28;
+                const op = abs > 2 ? 0 : 1 - abs * 0.18;
+                card.style.transform = `translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg)`;
+                card.style.opacity = op;
+                card.style.zIndex = 100 - abs;
+                card.classList.toggle('active', offset === 0);
+                card.style.pointerEvents = abs > 2 ? 'none' : 'auto';
+            });
+            dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        }
+        function go(dir) { current = (current + dir + cards.length) % cards.length; render(); }
+        function resetAuto() { clearInterval(auto); auto = setInterval(() => go(1), 3500); }
+
+        document.getElementById('next').addEventListener('click', () => { go(1); resetAuto(); });
+        document.getElementById('prev').addEventListener('click', () => { go(-1); resetAuto(); });
+        cards.forEach((card, i) => card.addEventListener('click', () => { if (i !== current) { current = i; render(); resetAuto(); } }));
+
+        // Swipe / arrasto
+        let startX = null;
+        const track = document.getElementById('track');
+        track.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+        track.addEventListener('touchend', e => {
+            if (startX === null) return;
+            const dx = e.changedTouches[0].clientX - startX;
+            if (Math.abs(dx) > 40) { go(dx < 0 ? 1 : -1); resetAuto(); }
+            startX = null;
+        });
+
+        render(); resetAuto();
+    </script>
 </body>
 </html>

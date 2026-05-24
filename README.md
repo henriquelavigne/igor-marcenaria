@@ -2,7 +2,19 @@
 
 ## ✅ O QUE ESTÁ PRONTO
 
-Seu site está **100% funcional** e pronto para usar! Tudo em um único arquivo HTML.
+Seu site está **100% funcional** com visual moderno e futurista!
+
+## 🎨 NOVIDADES DO REDESIGN
+
+- **Tema híbrido:** hero escuro impactante + seções claras clean
+- **Carrossel 3D coverflow** dinâmico e automático com seus trabalhos
+- **Glassmorphism:** cards de vidro fosco translúcido
+- **Efeitos 3D:** cards que inclinam ao passar o mouse (tilt)
+- **Fundos com imagens** de marcenaria em baixa opacidade (não mais cores chapadas)
+- **Animações de scroll:** elementos surgem suavemente ao rolar
+- **Contadores animados** nas estatísticas
+- **Detalhes futuristas:** brilhos âmbar, bordas com gradiente, grão sutil
+- **Tipografia distinta:** Syne (display) + Manrope (corpo)
 
 ## 📁 ARQUIVOS INCLUÍDOS
 
@@ -127,6 +139,8 @@ Se quiser mudar alguma coisa depois, é só abrir o `index.html` com um editor d
 2. **Mantenha a estrutura** das pastas quando fizer upload
 3. **Teste sempre** no celular depois de hospedar
 4. **Google Drive** - As 100+ fotos ficam no Drive para economizar espaço no site
+5. **Imagens de fundo** - Os fundos de marcenaria vêm do Unsplash (banco gratuito, livre para uso comercial) e carregam direto da internet. Precisa de conexão para aparecerem.
+6. **Carrossel** - Atualmente usa suas 5 fotos reais em loop dinâmico. Para ampliar, envie mais fotos do Drive e adicionamos novos cards.
 
 ## 🎁 PRESENTE ESPECIAL
 
