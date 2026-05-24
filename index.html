@@ -147,7 +147,7 @@
         .orb-1 { width: 320px; height: 320px; top: 12%; left: -60px; }
         .orb-2 { width: 260px; height: 260px; bottom: 8%; right: -40px; background: radial-gradient(circle, rgba(62,92,66,0.45), transparent 70%); animation-delay: 2s; }
 
-        .hero-content { position: relative; z-index: 3; max-width: 880px; }
+        .hero-content { position: relative; z-index: 3; max-width: 880px; width: 100%; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 0.5rem;
             padding: 0.5rem 1.2rem; border-radius: 100px; margin-bottom: 2rem;
@@ -155,13 +155,15 @@
             backdrop-filter: blur(10px); color: var(--ambar-claro);
             font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px;
             animation: fadeUp 0.9s ease both;
+            max-width: 100%; box-sizing: border-box;
         }
-        .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #2BD46E; box-shadow: 0 0 10px #2BD46E; animation: glow 2s infinite; }
+        .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #2BD46E; box-shadow: 0 0 10px #2BD46E; animation: glow 2s infinite; flex-shrink: 0; }
 
         .hero h2 {
-            font-size: clamp(2.6rem, 7vw, 5.2rem); color: var(--creme);
+            font-size: clamp(28px, 7vw, 5.2rem); color: var(--creme);
             margin-bottom: 1.5rem; letter-spacing: -1px;
             animation: fadeUp 1s ease 0.15s both;
+            overflow-wrap: break-word; word-break: break-word;
         }
         .hero h2 .accent {
             background: linear-gradient(120deg, var(--ambar-claro), var(--ambar), #fff, var(--ambar-claro));
@@ -382,12 +384,15 @@
             .float-wpp { display: flex; }
             .hero { padding: 6.5rem 22px 4rem; }
             .showcase-head, .showcase-foot { padding-left: 22px; padding-right: 22px; }
-            .features, .stats, .portfolio-band, .final-cta, footer { padding-left: 22px; padding-right: 22px; }
+            .features, .stats, .portfolio-band, .final-cta { padding-left: 22px; padding-right: 22px; }
+            footer { padding-left: 22px; padding-right: 22px; padding-bottom: 82px; }
             .card3d { width: 260px; height: 340px; margin: -170px 0 0 -130px; }
             .carousel-3d { height: 380px; }
             .stats-inner { grid-template-columns: 1fr; gap: 2.5rem; }
             .stat-divider { display: none; }
             .orb-1, .orb-2 { opacity: 0.55; }
+            .car-nav { padding: 0 12px; box-sizing: border-box; }
+            .car-dots { max-width: 180px; }
             .glass-card { padding: 2.2rem 1.6rem; }
             .hero-badge { font-size: 0.78rem; line-height: 1.4; }
             .scroll-hint { display: none; }
