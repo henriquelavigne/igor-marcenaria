@@ -29,7 +29,7 @@
             --glass-light: rgba(255, 255, 255, 0.55);
         }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
         body {
             font-family: 'Manrope', sans-serif;
@@ -38,7 +38,10 @@
             line-height: 1.65;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
+        img { display: block; max-width: 100%; }
 
         /* Grão sutil global */
         body::after {
@@ -51,7 +54,8 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
-        h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 800; line-height: 1.1; }
+        h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 800; line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance; }
+        p { text-wrap: pretty; }
 
         /* ===== ANIMAÇÕES ===== */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
@@ -359,31 +363,43 @@
 
         /* ===== BOTÃO WHATSAPP FLUTUANTE (MOBILE) ===== */
         .float-wpp {
-            position: fixed; bottom: 18px; right: 18px; z-index: 1500;
-            width: 60px; height: 60px; border-radius: 50%;
+            position: fixed;
+            bottom: max(18px, env(safe-area-inset-bottom));
+            right: max(16px, env(safe-area-inset-right));
+            z-index: 1500;
+            width: 58px; height: 58px; border-radius: 50%;
             background: linear-gradient(135deg, #2BD46E 0%, #14A85A 100%);
             display: none; align-items: center; justify-content: center;
             box-shadow: 0 8px 24px rgba(20,168,90,0.5); animation: glowG 2.4s infinite;
         }
-        .float-wpp svg { width: 32px; height: 32px; fill: #fff; }
+        .float-wpp svg { width: 30px; height: 30px; fill: #fff; }
         @keyframes glowG { 0%,100% { box-shadow: 0 8px 24px rgba(20,168,90,0.45); } 50% { box-shadow: 0 8px 34px rgba(20,168,90,0.7); } }
 
         /* ===== RESPONSIVO ===== */
         @media (max-width: 768px) {
-            header { padding: 1rem 5%; }
+            header { padding: 1rem max(18px, env(safe-area-inset-left)) 1rem max(18px, env(safe-area-inset-right)); }
             .header-cta { display: none; }
             .float-wpp { display: flex; }
-            .hero { padding: 7rem 5% 4rem; }
+            .hero { padding: 6.5rem 22px 4rem; }
+            .showcase-head, .showcase-foot { padding-left: 22px; padding-right: 22px; }
+            .features, .stats, .portfolio-band, .final-cta, footer { padding-left: 22px; padding-right: 22px; }
             .card3d { width: 260px; height: 340px; margin: -170px 0 0 -130px; }
             .carousel-3d { height: 380px; }
             .stats-inner { grid-template-columns: 1fr; gap: 2.5rem; }
             .stat-divider { display: none; }
-            .orb-1, .orb-2 { opacity: 0.6; }
+            .orb-1, .orb-2 { opacity: 0.55; }
+            .glass-card { padding: 2.2rem 1.6rem; }
+            .hero-badge { font-size: 0.78rem; line-height: 1.4; }
+            .scroll-hint { display: none; }
         }
         @media (max-width: 420px) {
-            .card3d { width: 220px; height: 290px; margin: -145px 0 0 -110px; }
-            .carousel-3d { height: 330px; }
+            .hero { padding-left: 18px; padding-right: 18px; }
+            .features, .stats, .portfolio-band, .final-cta, footer,
+            .showcase-head, .showcase-foot { padding-left: 18px; padding-right: 18px; }
+            .card3d { width: 215px; height: 285px; margin: -142px 0 0 -107px; }
+            .carousel-3d { height: 325px; }
             .hero-actions { flex-direction: column; align-items: stretch; }
+            .btn-wpp, .btn-ghost { justify-content: center; }
         }
     </style>
 </head>
