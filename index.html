@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Igor Marcenaria - Móveis sob medida em Feira de Santana. Mais de 100 clientes satisfeitos. Qualidade, preço justo e satisfação garantida.">
+    <title>Igor Marcenaria | Móveis Sob Medida em Feira de Santana</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bege-claro: #F5F1E8;
+            --verde-oliva: #4A6741;
+            --verde-escuro: #2C3E26;
+            --marrom-madeira: #8B7355;
+            --branco: #FFFFFF;
+            --cinza-claro: #E8E4DC;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--verde-escuro);
+            background: var(--bege-claro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Textura sutil de madeira no fundo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 115, 85, 0.02) 2px,
+                    rgba(139, 115, 85, 0.02) 4px
+                );
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        /* Header/Logo */
+        header {
+            padding: 2rem 5%;
+            background: var(--branco);
+            box-shadow: 0 2px 20px rgba(44, 62, 38, 0.08);
+            position: relative;
+        }
+        
+        .logo {
+            text-align: center;
+        }
+        
+        .logo h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--verde-escuro);
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo h1::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--verde-oliva), var(--marrom-madeira));
+        }
+        
+        .logo p {
+            margin-top: 0.8rem;
+            color: var(--marrom-madeira);
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 5% 6rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bege-claro) 0%, #EAE6DC 100%);
+            position: relative;
+        }
+        
+        .hero h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--verde-escuro);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--verde-oliva);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--verde-escuro);
+            color: var(--bege-claro);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 15px rgba(44, 62, 38, 0.2);
+        }
+        
+        .badge::before {
+            content: '✓';
+            background: var(--verde-oliva);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* Botão WhatsApp */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+        }
+        
+        .btn-whatsapp::before {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/%3E%3C/svg%3E");
+            background-size: contain;
+        }
+        
+        /* Seção Diferenciais */
+        .diferenciais {
+            padding: 5rem 5%;
+            background: var(--branco);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-title h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--verde-escuro);
+            margin-bottom: 0.8rem;
+        }
+        
+        .section-title p {
+            color: var(--verde-oliva);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: var(--bege-claro);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--verde-oliva);
+            box-shadow: 0 15px 40px rgba(74, 103, 65, 0.15);
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--verde-oliva), var(--verde-escuro));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .card h4 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.6rem;
+            color: var(--verde-escuro);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .card p {
+            color: var(--marrom-madeira);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        
+        /* Galeria */
+        .galeria {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--bege-claro) 0%, #EAE6DC 100%);
+        }
+        
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .galeria-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(44, 62, 38, 0.1);
+            transition: all 0.4s ease;
+            aspect-ratio: 4/3;
+        }
+        
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .galeria-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(44, 62, 38, 0.2);
+        }
+        
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .galeria-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 103, 65, 0.4), rgba(44, 62, 38, 0.4));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .galeria-item:hover::after {
+            opacity: 1;
+        }
+        
+        /* CTA Final */
+        .cta-final {
+            padding: 5rem 5%;
+            background: var(--verde-escuro);
+            text-align: center;
+            color: var(--bege-claro);
+        }
+        
+        .cta-final h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        
+        .cta-final p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2.5rem 5%;
+            background: var(--verde-escuro);
+            color: var(--bege-claro);
+            text-align: center;
+            border-top: 3px solid var(--marrom-madeira);
+        }
+        
+        footer p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        footer strong {
+            color: var(--branco);
+            font-weight: 600;
+        }
+        
+        /* Botão Portfólio */
+        .btn-portfolio {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: var(--branco);
+            color: var(--verde-escuro);
+            padding: 1.5rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 8px 30px rgba(44, 62, 38, 0.15);
+            transition: all 0.3s ease;
+            border: 2px solid var(--verde-oliva);
+        }
+        
+        .btn-portfolio:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(44, 62, 38, 0.25);
+            border-color: var(--verde-escuro);
+        }
+        
+        .btn-portfolio-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        
+        .btn-portfolio span:last-child {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.3rem;
+        }
+        
+        .btn-portfolio strong {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--verde-escuro);
+        }
+        
+        .btn-portfolio small {
+            font-size: 0.9rem;
+            color: var(--marrom-madeira);
+            font-weight: 400;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h3 {
+                font-size: 2rem;
+            }
+            
+            .cta-final h3 {
+                font-size: 2.2rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-portfolio {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.2rem 1.8rem;
+            }
+            
+            .btn-portfolio span:last-child {
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="animate-fade-up">
+        <div class="logo">
+            <h1>Igor Marcenaria</h1>
+            <p>Móveis Sob Medida</p>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2 class="animate-fade-up delay-1">Transforme Seu Espaço com Qualidade Artesanal</h2>
+        <p class="animate-fade-up delay-2">Móveis planejados sob medida em Feira de Santana e região. Cada projeto é executado com dedicação, sem pressa, garantindo o resultado perfeito.</p>
+        <div class="badge animate-fade-up delay-3">+100 clientes satisfeitos</div>
+        <a href="https://wa.me/5575982427067?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20de%20marcenaria" target="_blank" class="btn-whatsapp animate-fade-up delay-4">
+            Fazer Orçamento no WhatsApp
+        </a>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="diferenciais">
+        <div class="section-title animate-fade-up">
+            <h3>Por Que Escolher a Igor Marcenaria?</h3>
+            <p>Compromisso com excelência em cada detalhe</p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card animate-fade-up delay-1">
+                <div class="card-icon">🛠️</div>
+                <h4>Qualidade Sem Pressa</h4>
+                <p>Executamos cada projeto com o tempo necessário para garantir acabamento impecável e durabilidade.</p>
+            </div>
+            
+            <div class="card animate-fade-up delay-2">
+                <div class="card-icon">💰</div>
+                <h4>Preço Justo</h4>
+                <p>Transparência total nos orçamentos. Cobramos o valor justo pelo trabalho de qualidade que entregamos.</p>
+            </div>
+            
+            <div class="card animate-fade-up delay-3">
+                <div class="card-icon">✅</div>
+                <h4>Satisfação Garantida</h4>
+                <p>Nosso propósito é ver você completamente satisfeito com o resultado final da sua obra.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section class="galeria">
+        <div class="section-title animate-fade-up">
+            <h3>Nossos Trabalhos</h3>
+            <p>Confira alguns projetos que realizamos com dedicação</p>
+        </div>
+        
+        <div class="galeria-grid">
+            <div class="galeria-item animate-fade-up delay-1">
+                <img src="imagens/berco.png" alt="Berço infantil planejado em MDF branco com gavetas integradas">
+            </div>
+            <div class="galeria-item animate-fade-up delay-2">
+                <img src="imagens/guarda-roupa.png" alt="Guarda-roupa planejado com portas deslizantes em branco">
+            </div>
+            <div class="galeria-item animate-fade-up delay-3">
+                <img src="imagens/escrivaninha.png" alt="Escrivaninha em L planejada com gavetas">
+            </div>
+            <div class="galeria-item animate-fade-up delay-4">
+                <img src="imagens/berco-gavetas.png" alt="Detalhe das gavetas do berço planejado">
+            </div>
+            <div class="galeria-item animate-fade-up delay-4">
+                <img src="imagens/guarda-roupa-aberto.png" alt="Guarda-roupa planejado com interior organizado">
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="portfolio.html" class="btn-portfolio animate-fade-up delay-4">
+                <span class="btn-portfolio-icon">📸</span>
+                <span>
+                    <strong>Ver Portfólio Completo</strong>
+                    <small>+100 fotos de trabalhos realizados</small>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <h3 class="animate-fade-up">Vamos Transformar o Seu Espaço?</h3>
+        <p class="animate-fade-up delay-1">Entre em contato agora e receba seu orçamento personalizado sem compromisso.</p>
+        <a href="https://wa.me/5575982427067?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20de%20marcenaria" target="_blank" class="btn-whatsapp animate-fade-up delay-2">
+            Fazer Orçamento no WhatsApp
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Igor Marcenaria</strong> | Feira de Santana - Bahia</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">© 2026 - Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>
