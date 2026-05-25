@@ -382,16 +382,24 @@
             header { padding: 1rem max(18px, env(safe-area-inset-left)) 1rem max(18px, env(safe-area-inset-right)); }
             .header-cta { display: none; }
             .float-wpp { display: flex; }
-            .hero { padding: 6.5rem 22px 4rem; }
+            .hero { min-height: auto; padding: 6rem 22px 3.5rem; }
+            /* Ritmo vertical unificado — elimina buracos entre seções */
+            .showcase { padding: 3.5rem 0 3.5rem; }
+            .showcase-head { margin-bottom: 2.2rem; }
+            .showcase-foot { margin-top: 2rem; }
+            .features { padding: 3.8rem 22px; }
+            .features-head { margin-bottom: 2.5rem; }
+            .stats { padding: 3.8rem 22px; }
+            .portfolio-band { padding: 3.8rem 22px; }
+            .final-cta { padding: 4rem 22px; }
             .showcase-head, .showcase-foot { padding-left: 22px; padding-right: 22px; }
-            .features, .stats, .portfolio-band, .final-cta { padding-left: 22px; padding-right: 22px; }
             footer { padding-left: 22px; padding-right: 22px; padding-bottom: 82px; }
             .card3d { width: 260px; height: 340px; margin: -170px 0 0 -130px; }
             .carousel-3d { height: 380px; }
-            .stats-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .stats-inner { grid-template-columns: 1fr; gap: 2.2rem; }
             .stat-divider { display: none; }
             .orb-1, .orb-2 { opacity: 0.55; }
-            .car-nav { padding: 0 12px; box-sizing: border-box; }
+            .car-nav { padding: 0 12px; box-sizing: border-box; margin-top: 0.5rem; }
             .car-dots { max-width: 180px; }
             .glass-card { padding: 2.2rem 1.6rem; }
             .hero-badge { font-size: 0.78rem; line-height: 1.4; }
